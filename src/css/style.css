@@ -1,0 +1,48 @@
+:root {
+  --dark-primary: #1a1a1a;
+  --dark-secondary: #2d2d2d;
+  --accent: #ff9500;
+  --text-primary: #ffffff;
+  --text-secondary: #b3b3b3;
+  --shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+body {
+  background-color: var(--dark-primary);
+  color: var(--text-primary);
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  line-height: 1.6;
+  transition: all 0.3s ease;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Common components */
+section {
+  padding: 8rem 0;
+  position: relative;
+}
+
+.btn {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 50px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: var(--shadow);
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  filter: brightness(1.1);
+}

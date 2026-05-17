@@ -1,0 +1,198 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  min-height: 100%;
+  background: #fafafa;
+  color: #18181b;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* Workflow node styling */
+.react-flow__node {
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+.obsidian-node {
+  width: 168px;
+  min-height: 82px;
+  overflow: visible;
+  border: 1px solid rgba(228, 228, 231, 0.95);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.10), 0 1px 0 rgba(255, 255, 255, 0.9) inset;
+  backdrop-filter: blur(18px);
+  color: #27272a;
+  transition: box-shadow 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
+}
+
+.obsidian-node:hover {
+  border-color: rgba(129, 140, 248, 0.7);
+  box-shadow: 0 18px 40px rgba(79, 70, 229, 0.16), 0 1px 0 rgba(255, 255, 255, 0.95) inset;
+  transform: translateY(-1px);
+}
+
+.obsidian-node.selected {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.16), 0 18px 40px rgba(79, 70, 229, 0.18);
+}
+
+.obsidian-node.executing {
+  border-color: #22c55e;
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.16), 0 18px 40px rgba(34, 197, 94, 0.14);
+}
+
+@keyframes nodeError {
+  0%, 100% { box-shadow: 0 0 0 3px rgba(239,68,68,0.1); }
+  50% { box-shadow: 0 0 0 6px rgba(239,68,68,0.3), 0 0 15px rgba(239,68,68,0.3); border-color: #ef4444; }
+}
+.obsidian-node.error {
+  animation: nodeError 1.5s ease-in-out infinite;
+  border-color: #ef4444;
+}
+
+@keyframes nodeTimeout {
+  0%, 100% { box-shadow: 0 0 0 3px rgba(245,158,11,0.1); }
+  50% { box-shadow: 0 0 0 6px rgba(245,158,11,0.3), 0 0 15px rgba(245,158,11,0.3); border-color: #f59e0b; }
+}
+.obsidian-node.timeout {
+  animation: nodeTimeout 1.5s ease-in-out infinite;
+  border-color: #f59e0b;
+}
+
+.obsidian-node.completed {
+  border-color: #10b981;
+}
+
+.node-header {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  height: 32px;
+  padding: 0 11px;
+  border-radius: 13px 13px 0 0;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.node-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 17px;
+  height: 17px;
+  flex: 0 0 auto;
+  font-size: 13px;
+  line-height: 1;
+}
+
+.node-title {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.node-body {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-height: 48px;
+  padding: 10px 12px 12px;
+  font-size: 11px;
+}
+
+.node-badge {
+  max-width: 92px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  border-radius: 999px;
+  background: #f4f4f5;
+  color: #52525b;
+  padding: 3px 7px;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.ws-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 20px;
+  border-radius: 999px;
+  background: #ecfdf5;
+  color: #047857;
+  padding: 0 6px;
+  font-size: 10px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.handle-label-left,
+.handle-label-right {
+  position: absolute;
+  z-index: 4;
+  transform: translateY(-50%);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92);
+  color: #52525b;
+  padding: 1px 5px;
+  font-size: 9px;
+  font-weight: 800;
+  line-height: 1.4;
+  pointer-events: none;
+  box-shadow: 0 1px 4px rgba(15, 23, 42, 0.08);
+}
+
+.handle-label-left {
+  left: -29px;
+}
+
+.handle-label-right {
+  right: -27px;
+}
+
+.react-flow__handle {
+  z-index: 5;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.95), 0 3px 8px rgba(15, 23, 42, 0.16);
+}
+
+.react-flow__edge-path {
+  stroke-linecap: round;
+}
+
+.react-flow__edge.edge-executing .react-flow__edge-path {
+  stroke: #22c55e !important;
+  stroke-width: 3;
+  filter: drop-shadow(0 0 6px rgba(34, 197, 94, 0.65));
+}
+
+.react-flow__edge.edge-completed .react-flow__edge-path {
+  stroke: #10b981 !important;
+}
+
+.react-flow__edge.edge-error .react-flow__edge-path {
+  stroke: #ef4444 !important;
+}
+
+.react-flow__controls,
+.react-flow__minimap {
+  overflow: hidden;
+  border-radius: 10px;
+}
