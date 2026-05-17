@@ -3,6 +3,9 @@
 > A customizable AI-powered workspace built with Electron, Vite, and Tailwind CSS.
 
 ---
+![Version](https://img.shields.io/badge/version-v1.4-blue)
+![Electron](https://img.shields.io/badge/Electron-Desktop_App-green)
+![Vite](https://img.shields.io/badge/Vite-Fast-purple)
 
 ## Overview
 
